@@ -304,6 +304,7 @@ const dropdown_pkg_copy_js: any = {
       ["Grape", "GRAPE"],
       ["Honeydew", "HONEYDEW"],
     ];
+    // TODO: why it's rendering value (not option label) and why dropdown is not working?
     this.appendDummyInput().appendField(
       new BlocklyFieldSearchableDropdown(options, this.validator),
       "FRUIT"

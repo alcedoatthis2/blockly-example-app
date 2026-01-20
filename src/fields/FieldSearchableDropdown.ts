@@ -12,12 +12,20 @@ export class FieldSearchableDropdown extends Blockly.FieldDropdown {
     // menuGenerator: Blockly.FieldDropdownMenuGenerator,
     opt_validator?: Blockly.FieldValidator
   ) {
+    // const validator = opt_validator || this.validate;
     super(menuGenerator, opt_validator);
     this.originalMenuGenerator = menuGenerator;
   }
 
+  validate(newValue: string): string | null {
+    this.updateMenu_();
+    return newValue;
+  }
+
   // Called when dropdown is about to be shown
   protected override showEditor_(e?: MouseEvent): void {
+    console.log("[FieldSearchableDropdown.showEditor_]", { this: this });
+    debugger;
     // Let parent create the basic dropdown structure
     super.showEditor_(e);
 
@@ -36,6 +44,8 @@ export class FieldSearchableDropdown extends Blockly.FieldDropdown {
     this.filterInput_.style.border = "1px solid #ccc";
     this.filterInput_.style.borderRadius = "4px";
 
+    debugger;
+
     // Insert at the beginning
     div.insertBefore(this.filterInput_, div.firstChild);
 
@@ -44,7 +54,7 @@ export class FieldSearchableDropdown extends Blockly.FieldDropdown {
 
     // Listen for filtering
     this.filterInput_.addEventListener("input", () => this.updateMenu_());
-
+    debugger;
     // Re-generate menu when shown (in case options are dynamic)
     this.updateMenu_();
   }
@@ -72,6 +82,12 @@ export class FieldSearchableDropdown extends Blockly.FieldDropdown {
 
     // Update internal menu generator temporarily
     (this as any).menuGenerator_ = allOptions;
+
+    console.log("[FieldSearchableDropdown.updateMenu_]", {
+      searchText,
+      allOptions,
+    });
+    debugger;
 
     // Force rebuild of the menu
     // Warning: this is a bit fragile – relies on internal implementation

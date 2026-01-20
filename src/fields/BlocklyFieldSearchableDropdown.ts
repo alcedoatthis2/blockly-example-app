@@ -37,6 +37,12 @@ export class BlocklyFieldSearchableDropdown extends Blockly.FieldTextInput {
     (this as any).rules = rules;
     (this as any).filteredOptions = rules || [];
     this.setSpellcheck(false);
+    this.setValidator(this.validate.bind(this));
+  }
+
+  validate(newValue: any): any {
+    if ((this as any).optionsContainer) this.onHtmlInputChange_(undefined);
+    return newValue;
   }
 
   /**
@@ -63,6 +69,8 @@ export class BlocklyFieldSearchableDropdown extends Blockly.FieldTextInput {
       return; // dropdown already open → do nothing
     }
 
+    // debugger;
+
     // Set up the text input field first
     super.showEditor_();
 
@@ -84,9 +92,14 @@ export class BlocklyFieldSearchableDropdown extends Blockly.FieldTextInput {
       (this as any).sourceBlock_.style.colourTertiary
     );
 
+    const focusManager = Blockly.getFocusManager();
+
+    // debugger;
     Blockly.DropDownDiv.showPositionedByField(
       this,
-      this.dropdownDispose_.bind(this)
+      this.dropdownDispose_.bind(this),
+      undefined,
+      false // Without manageEphemeralFocus:false it crashes on focus conflict. Consequences?
     );
 
     // Keep focus on the text input
@@ -299,6 +312,8 @@ export class BlocklyFieldSearchableDropdown extends Blockly.FieldTextInput {
 
   // Rewrite the processing logic when the input box content changes
   onHtmlInputChange_(e: any) {
+    // why not called?
+    // debugger;
     console.log("[BlocklyFieldSearchableDropdown.onHtmlInputChange_]", { e });
     // Filter options based on input and re-render dropdown
     const inputValue = (this as any).htmlInput_?.value || "";
