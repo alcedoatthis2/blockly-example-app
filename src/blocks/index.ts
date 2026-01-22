@@ -2,6 +2,7 @@ import * as Blockly from "blockly/core";
 import { addText } from "./text";
 import { BlockDefinition } from "blockly/core/blocks";
 import { BlocklyFieldSearchableDropdown } from "../fields/BlocklyFieldSearchableDropdown";
+import { SearchableDropdown } from "../fields/SearchableDropdown";
 
 // types missing
 // import { FieldSearchable } from "blockly-field-searchable-dropdown";

@@ -17,6 +17,7 @@ import {
 } from "@blockly/block-shareable-procedures";
 import "./extensions";
 import "./fields/BlocklyFieldSearchableDropdown";
+import "./fields/SearchableDropdown";
 import "blockly-field-searchable-dropdown";
 
 unregisterProcedureBlocks();

@@ -1,7 +1,4 @@
 import * as Blockly from "blockly";
-
-// You can also do: import {FieldDropdown} from 'blockly/field_dropdown';
-
 export class FieldSearchableDropdown extends Blockly.FieldDropdown {
   private filterInput_: HTMLInputElement | null = null;
   private originalMenuGenerator: Blockly.MenuGenerator;
@@ -125,6 +122,6 @@ export class FieldSearchableDropdown extends Blockly.FieldDropdown {
 
 // Register the field so it can be used in JSON blocks too
 Blockly.fieldRegistry.register(
-  "field_searchable_dropdown",
+  "field_searchable_dropdown_2",
   FieldSearchableDropdown
 );

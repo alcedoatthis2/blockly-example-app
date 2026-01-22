@@ -121,3 +121,10 @@ forBlock["field_searchable_dropdown_json"] = function (
 ) {
   return "";
 };
+
+forBlock["field_searchable_dropdown_json"] = function (
+  block: Blockly.Block,
+  generator: Blockly.CodeGenerator
+) {
+  return "";
+};
